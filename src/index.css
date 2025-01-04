@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .tech-heading {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.03em;
+  }
+}
+
+.nav-link {
+  font-family: 'JetBrains Mono', monospace;
+  @apply text-sm uppercase tracking-wider hover:text-blue-400 transition-colors;
+}
+
+.nav-button {
+  font-family: 'JetBrains Mono', monospace;
+  @apply px-4 py-2 border border-white/20 rounded-md hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500;
+}

@@ -1,0 +1,1 @@
+export const NEWSLETTER_WEBHOOK_URL = 'https://hook.eu2.make.com/y4e5mkuh3d3pqubghwvkijnwj1fae5v0';
