@@ -1,24 +1,23 @@
-import React from 'react';
-import { MessageSquare, Users, Calendar } from 'lucide-react';
+import { Phone, Mail, MessageSquare } from 'lucide-react';
 
 const features = [
   {
+    icon: Phone,
+    title: "AI Phone Assistant",
+    description: "Automate your phone communications with AI that handles calls, schedules appointments, and manages follow-ups.",
+    stat: "24/7 availability"
+  },
+  {
+    icon: Mail,
+    title: "Fully Automated AI Cold Email Outreach",
+    description: "Intelligent email system that crafts and sends highly personalized outreach campaigns to your leads, maximizing response rates.",
+    stat: "85% open rate"
+  },
+  {
     icon: MessageSquare,
-    title: "Customer Support Automation",
-    description: "Handle 90% of queries automatically, improving response times and customer satisfaction.",
-    stat: "90% faster response time"
-  },
-  {
-    icon: Users,
-    title: "CRM Integration",
-    description: "Streamline lead management and follow-ups, boosting conversions by 40%.",
-    stat: "40% more conversions"
-  },
-  {
-    icon: Calendar,
-    title: "Appointment Scheduling",
-    description: "Automate bookings and reminders, reducing no-shows and saving you hours.",
-    stat: "75% fewer no-shows"
+    title: "AI Website Chatbot",
+    description: "Smart conversational AI that engages visitors, answers questions, and captures qualified leads around the clock.",
+    stat: "90% inquiry resolution"
   }
 ];
 
