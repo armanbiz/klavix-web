@@ -18,7 +18,7 @@ const features = [
   },
   {
     icon: MessageSquare,
-    title: "AI Website Chatbot",
+    title: "AI Chatbot",
     description: "Smart conversational AI that engages visitors, answers questions, and captures qualified leads around the clock.",
     detailedDescription: "More than just a chatbot, our AI-powered conversation engine learns from every interaction to provide increasingly accurate responses. It qualifies leads, books meetings, provides product recommendations, and seamlessly hands off to human agents when needed. Includes multilingual support and advanced analytics dashboard.",
     stat: "90% inquiry resolution"
