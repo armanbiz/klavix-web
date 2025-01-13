@@ -1,3 +1,4 @@
+import React from 'react';
 import { Phone, Mail, MessageSquare } from 'lucide-react';
 
 const features = [
