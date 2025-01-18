@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MessageSquare } from 'lucide-react';
 
 const features = [
@@ -25,6 +25,54 @@ const features = [
   }
 ];
 
+const FeatureCard = ({ feature }: { feature: typeof features[0] }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const Icon = feature.icon;
+
+  return (
+    <div className="h-[400px] perspective-1000">
+      {/* Touch devices: handle click/touch */}
+      <div 
+        className="md:hidden h-full"
+        onClick={() => setIsFlipped(!isFlipped)}
+      >
+        <div className={`relative h-full transition-transform duration-500 transform-style-3d ${
+          isFlipped ? 'rotate-y-180' : ''
+        }`}>
+          <Front feature={feature} Icon={Icon} />
+          <Back feature={feature} />
+        </div>
+      </div>
+
+      {/* Desktop: handle hover */}
+      <div className="hidden md:block h-full group">
+        <div className="relative h-full transition-transform duration-500 transform-style-3d group-hover:rotate-y-180">
+          <Front feature={feature} Icon={Icon} />
+          <Back feature={feature} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Front = ({ feature, Icon }: { feature: typeof features[0], Icon: typeof features[0]['icon'] }) => (
+  <div className="absolute inset-0 p-6 rounded-lg border border-white/10 bg-black backface-hidden">
+    <Icon className="h-12 w-12 text-blue-500 mb-6 animate-float" />
+    <h3 className="tech-heading text-xl mb-4">{feature.title}</h3>
+    <p className="text-gray-400 mb-4">{feature.description}</p>
+    <p className="text-blue-400 font-mono text-sm animate-pulse-slow">{feature.stat}</p>
+  </div>
+);
+
+const Back = ({ feature }: { feature: typeof features[0] }) => (
+  <div className="absolute inset-0 p-6 rounded-lg border border-blue-500/50 bg-blue-900/10 backface-hidden rotate-y-180">
+    <h3 className="tech-heading text-xl mb-4 text-blue-400">{feature.title}</h3>
+    <p className="text-gray-300 leading-relaxed">
+      {feature.detailedDescription}
+    </p>
+  </div>
+);
+
 const FeaturesSection = () => {
   return (
     <section id="solutions" className="py-16 sm:py-20 px-4 sm:px-6">
@@ -34,33 +82,9 @@ const FeaturesSection = () => {
         </h2>
         
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 stagger-children">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div 
-                key={index} 
-                className="group h-[400px] perspective-1000"
-              >
-                <div className="relative h-full transition-transform duration-500 transform-style-3d group-hover:rotate-y-180">
-                  {/* Front of card */}
-                  <div className="absolute inset-0 p-6 rounded-lg border border-white/10 bg-black backface-hidden">
-                    <Icon className="h-12 w-12 text-blue-500 mb-6 animate-float" />
-                    <h3 className="tech-heading text-xl mb-4">{feature.title}</h3>
-                    <p className="text-gray-400 mb-4">{feature.description}</p>
-                    <p className="text-blue-400 font-mono text-sm animate-pulse-slow">{feature.stat}</p>
-                  </div>
-                  
-                  {/* Back of card */}
-                  <div className="absolute inset-0 p-6 rounded-lg border border-blue-500/50 bg-blue-900/10 backface-hidden rotate-y-180">
-                    <h3 className="tech-heading text-xl mb-4 text-blue-400">{feature.title}</h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {feature.detailedDescription}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} />
+          ))}
         </div>
       </div>
     </section>
