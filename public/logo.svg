@@ -1,5 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <path d="M16 2L4 8V24L16 30L28 24V8L16 2Z" fill="#3B82F6"/>
-  <path d="M16 6L8 10V22L16 26L24 22V10L16 6Z" fill="#1D4ED8"/>
-  <path d="M16 10L12 12V20L16 22L20 20V12L16 10Z" fill="#FFFFFF"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <circle cx="256" cy="256" r="248" fill="url(#gradient)" stroke="white" stroke-width="16"/>
+  
+  <!-- Stylized "K" -->
+  <path d="M160 120L160 392M160 256L320 120M160 256L320 392" 
+        stroke="white" 
+        stroke-width="32" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
 </svg>
