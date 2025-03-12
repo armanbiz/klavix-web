@@ -2,13 +2,21 @@ import React from 'react';
 import { useContactForm } from '../../hooks/useContactForm';
 import FormInput from '../forms/FormInput';
 import FormTextarea from '../forms/FormTextarea';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import { Loader2 } from 'lucide-react';
 
 const ContactForm = () => {
   const { formData, errors, isSubmitting, handleChange, handleSubmit } = useContactForm();
+  const [formRef, isVisible] = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto bg-white/5 p-8 rounded-xl border border-white/10">
+    <form 
+      ref={formRef}
+      onSubmit={handleSubmit} 
+      className={`space-y-6 max-w-2xl mx-auto bg-white/5 p-8 rounded-xl border border-white/10 transform transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}
+    >
       <div className="grid md:grid-cols-2 gap-4">
         <FormInput
           name="name"

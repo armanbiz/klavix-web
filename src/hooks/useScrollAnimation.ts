@@ -1,30 +1,34 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const useScrollAnimation = () => {
-  const ref = useRef<HTMLElement>(null);
+interface UseScrollAnimationProps {
+  threshold?: number;
+  rootMargin?: string;
+}
+
+export const useScrollAnimation = ({
+  threshold = 0.1,
+  rootMargin = '0px'
+}: UseScrollAnimationProps = {}) => {
+  const elementRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-on-scroll');
-            observer.unobserve(entry.target);
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
       },
-      {
-        threshold: 0.1,
-        rootMargin: '50px',
-      }
+      { threshold, rootMargin }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [threshold, rootMargin]);
 
-  return ref;
+  return [elementRef, isVisible] as const;
 };

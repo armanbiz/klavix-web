@@ -3,16 +3,25 @@ import ProcessStep from './ProcessStep';
 import { PhoneCall, Lightbulb, Rocket } from 'lucide-react';
 import { MEETING_TYPES } from '../../config/calendly';
 import CalendlyButton from '../common/CalendlyButton';
+import { useScrollTypewriter } from '../../hooks/useScrollTypewriter';
 
 const ProcessSection = () => {
+  const [text, sectionRef] = useScrollTypewriter({
+    texts: [
+      'Our Implementation Process',
+      'Experience a streamlined onboarding process designed to get you started quickly and efficiently.'
+    ],
+    speed: 25
+  });
+
   return (
     <section className="py-20 px-6">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="tech-heading text-3xl md:text-4xl mb-6 animate-fade-in">
-          Our Implementation Process
+        <h2 ref={sectionRef} className="tech-heading text-3xl md:text-4xl mb-6 animate-fade-in">
+          {text[0]}
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto mb-16">
-          Experience a streamlined onboarding process designed to get you started quickly and efficiently.
+          {text[1]}
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 stagger-children">

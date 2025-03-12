@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MessageSquare } from 'lucide-react';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { useScrollTypewriter } from '../../hooks/useScrollTypewriter';
 
 const features = [
   {
@@ -34,9 +36,15 @@ const features = [
 const FeatureCard = ({ feature }: { feature: (typeof features)[0] }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const Icon = feature.icon;
+  const [cardRef, isVisible] = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <div className="h-[400px] perspective-1000">
+    <div 
+      ref={cardRef}
+      className={`h-[400px] perspective-1000 transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+      }`}
+    >
       {/* Touch devices: handle click/touch */}
       <div
         className="md:hidden h-full"
@@ -90,14 +98,22 @@ const Back = ({ feature }: { feature: (typeof features)[0] }) => (
 );
 
 const FeaturesSection = () => {
+  const [text, sectionRef] = useScrollTypewriter({
+    texts: ['AI Solutions Tailored for Your Business Needs'],
+    speed: 50
+  });
+
   return (
     <section id="solutions" className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="tech-heading text-2xl sm:text-3xl md:text-4xl text-center mb-12 sm:mb-16 animate-fade-in">
-          AI Solutions Tailored for Your Business Needs
+        <h2 
+          ref={sectionRef}
+          className="tech-heading text-2xl sm:text-3xl md:text-4xl text-center mb-12 sm:mb-16"
+        >
+          {text[0]}
         </h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 stagger-children">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} />
           ))}
