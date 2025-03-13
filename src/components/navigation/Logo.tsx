@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <div className="flex items-center space-x-2">
       <img 
-        src="/klavix_logo.png"
+        src="/Klavix_logo_New.png"
         alt="Klavix Logo" 
         className="h-8 w-8"
       />
