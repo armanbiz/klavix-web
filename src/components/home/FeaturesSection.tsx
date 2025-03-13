@@ -41,7 +41,7 @@ const FeatureCard = ({ feature }: { feature: (typeof features)[0] }) => {
   return (
     <div 
       ref={cardRef}
-      className={`relative h-[400px] perspective-1000 transition-all duration-1000 transform ${
+      className={`h-[400px] perspective-1000 transition-all duration-1000 transform ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
       }`}
     >
@@ -51,18 +51,18 @@ const FeatureCard = ({ feature }: { feature: (typeof features)[0] }) => {
         onClick={() => setIsFlipped(!isFlipped)}
       >
         <div
-          className={`relative h-full transition-all duration-500 transform-style-3d ${
+          className={`relative h-full transition-transform duration-500 transform-style-3d ${
             isFlipped ? 'rotate-y-180' : ''
           }`}
         >
-          <Front feature={feature} Icon={Icon} isFlipped={isFlipped} />
+          <Front feature={feature} Icon={Icon} />
           <Back feature={feature} />
         </div>
       </div>
 
       {/* Desktop: handle hover */}
       <div className="hidden md:block h-full group">
-        <div className="relative h-full transition-all duration-500 transform-style-3d hover:rotate-y-180">
+        <div className="relative h-full transition-transform duration-500 transform-style-3d group-hover:rotate-y-180">
           <Front feature={feature} Icon={Icon} />
           <Back feature={feature} />
         </div>
@@ -74,16 +74,12 @@ const FeatureCard = ({ feature }: { feature: (typeof features)[0] }) => {
 const Front = ({
   feature,
   Icon,
-  isFlipped,
 }: {
   feature: (typeof features)[0];
   Icon: (typeof features)[0]['icon'];
-  isFlipped?: boolean;
 }) => (
-  <div className={`absolute inset-0 p-6 rounded-lg border border-white/10 bg-black backface-hidden ${
-    isFlipped ? 'md:visible invisible' : 'visible'
-  }`}>
-    <Icon className="h-12 w-12 text-blue-500 mb-6 animate-float transition-transform" />
+  <div className="absolute inset-0 p-6 rounded-lg border border-white/10 bg-black backface-hidden">
+    <Icon className="h-12 w-12 text-blue-500 mb-6 animate-float" />
     <h3 className="tech-heading text-xl mb-4">{feature.title}</h3>
     <p className="text-gray-400 mb-4">{feature.description}</p>
     <p className="text-blue-400 font-mono text-sm animate-pulse-slow">
@@ -93,7 +89,7 @@ const Front = ({
 );
 
 const Back = ({ feature }: { feature: (typeof features)[0] }) => (
-  <div className="absolute inset-0 p-6 rounded-lg border border-blue-500/50 bg-blue-900/10 backface-hidden rotate-y-180 transition-all">
+  <div className="absolute inset-0 p-6 rounded-lg border border-blue-500/50 bg-blue-900/10 backface-hidden rotate-y-180">
     <h3 className="tech-heading text-xl mb-4 text-blue-400">{feature.title}</h3>
     <p className="text-gray-300 leading-relaxed">
       {feature.detailedDescription}
