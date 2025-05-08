@@ -6,8 +6,12 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  // Ensure public directory is properly served
   publicDir: 'public',
-  // Configure base URL if needed
   base: '/',
+  server: {
+    historyApiFallback: true,
+  },
+  preview: {
+    historyApiFallback: true,
+  },
 });
