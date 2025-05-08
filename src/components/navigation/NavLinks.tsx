@@ -1,7 +1,6 @@
 import React from 'react';
 import { scrollToElement } from '../../utils/scroll';
-import { useNewsletterPopup } from '../../hooks/useNewsletterPopup';
-import NewsletterPopup from '../newsletter/NewsletterPopup';
+import { useNavigate } from 'react-router-dom';
 
 interface NavLinksProps {
   isMobile?: boolean;
@@ -9,7 +8,7 @@ interface NavLinksProps {
 }
 
 const NavLinks = ({ isMobile, onItemClick }: NavLinksProps) => {
-  const { isOpen, openPopup, closePopup } = useNewsletterPopup();
+  const navigate = useNavigate();
 
   const handleGetStarted = () => {
     scrollToElement('solutions');
@@ -17,23 +16,20 @@ const NavLinks = ({ isMobile, onItemClick }: NavLinksProps) => {
   };
 
   const handleSubscribe = () => {
-    openPopup();
+    navigate('/newsletter');
     onItemClick?.();
   };
 
   return (
-    <>
-      <div className={`${isMobile ? 'flex flex-col space-y-6' : 'flex items-center space-x-6'}`}>
-        <button onClick={handleSubscribe} className="nav-link">[ SUBSCRIBE ]</button>
-        <button 
-          onClick={handleGetStarted} 
-          className={`nav-button ${isMobile ? 'w-full justify-center' : ''}`}
-        >
-          GET STARTED
-        </button>
-      </div>
-      <NewsletterPopup isOpen={isOpen} onClose={closePopup} />
-    </>
+    <div className={`${isMobile ? 'flex flex-col space-y-6' : 'flex items-center space-x-6'}`}>
+      <button onClick={handleSubscribe} className="nav-link">[ SUBSCRIBE ]</button>
+      <button 
+        onClick={handleGetStarted} 
+        className={`nav-button ${isMobile ? 'w-full justify-center' : ''}`}
+      >
+        GET STARTED
+      </button>
+    </div>
   );
 };
 
