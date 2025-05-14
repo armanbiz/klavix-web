@@ -22,7 +22,7 @@ const NavLinks = ({ isMobile, onItemClick }: NavLinksProps) => {
 
   return (
     <div className={`${isMobile ? 'flex flex-col space-y-6' : 'flex items-center space-x-6'}`}>
-      <button onClick={handleSubscribe} className="nav-link">[ SUBSCRIBE ]</button>
+      <button onClick={handleSubscribe} className="nav-link">[ NEWSLETTER ]</button>
       <button 
         onClick={handleGetStarted} 
         className={`nav-button ${isMobile ? 'w-full justify-center' : ''}`}
