@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import MouseGlow from './components/effects/MouseGlow';
 import NewsletterPage from './pages/NewsletterPage';
 import UnsubscribePage from './pages/UnsubscribePage';
+import AdvertiserPage from './pages/AdvertiserPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/newsletter" element={<NewsletterPage />} />
         <Route path="/unsubscribe" element={<UnsubscribePage />} />
+        <Route path="/advertise" element={<AdvertiserPage />} />
         <Route path="/" element={
           <div className="bg-black text-white min-h-screen relative overflow-hidden">
             <MouseGlow />
