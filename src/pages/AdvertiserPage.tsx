@@ -12,6 +12,7 @@ interface FormData {
   budget: string;
   startDate: string;
   duration: string;
+  customDuration?: string;
   notes: string;
   referralSource?: string;
 }
@@ -46,6 +47,7 @@ const AdvertiserPage = () => {
         },
         body: JSON.stringify({
           ...formData,
+          duration: formData.duration === 'Custom' ? formData.customDuration : formData.duration,
           submittedAt: new Date().toISOString()
         })
       });
@@ -146,6 +148,7 @@ const AdvertiserPage = () => {
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
                 value={formData.description}
                 onChange={handleInputChange}
+                placeholder="A short summary of what you offer or want to advertise."
               />
             </div>
 
@@ -177,6 +180,7 @@ const AdvertiserPage = () => {
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
                 value={formData.targetAudience}
                 onChange={handleInputChange}
+                placeholder="A description of who the ad is meant to reach."
               />
             </div>
 
@@ -189,7 +193,7 @@ const AdvertiserPage = () => {
                   id="budget"
                   name="budget"
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-3 border border-white/20 rounded-lg focus:outline-none focus:border-blue-500 transition-colors text-white bg-[#262626]"
                   value={formData.budget}
                   onChange={handleInputChange}
                 >
@@ -226,27 +230,39 @@ const AdvertiserPage = () => {
                 id="duration"
                 name="duration"
                 required
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full px-4 py-3 border border-white/20 rounded-lg focus:outline-none focus:border-blue-500 transition-colors text-white bg-[#262626]"
                 value={formData.duration}
                 onChange={handleInputChange}
               >
                 <option value="">Select duration</option>
+                <option value="1 week">1 week</option>
+                <option value="2 weeks">2 weeks</option>
                 <option value="1 month">1 month</option>
                 <option value="3 months">3 months</option>
-                <option value="6 months">6 months</option>
-                <option value="12 months">12 months</option>
                 <option value="Custom">Custom</option>
               </select>
+              
+              {formData.duration === 'Custom' && (
+                <input
+                  type="text"
+                  id="customDuration"
+                  name="customDuration"
+                  placeholder="Enter custom duration"
+                  required
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-blue-500 transition-colors mt-2"
+                  value={formData.customDuration}
+                  onChange={handleInputChange}
+                />
+              )}
             </div>
 
             <div>
               <label htmlFor="notes" className="block text-sm font-medium mb-2">
-                Additional Notes or Questions *
+                Additional Notes or Questions
               </label>
               <textarea
                 id="notes"
                 name="notes"
-                required
                 rows={4}
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
                 value={formData.notes}
