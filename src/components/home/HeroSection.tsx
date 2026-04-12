@@ -8,7 +8,7 @@ const HeroSection = () => {
     texts: [
       'AI Automation Agency',
       'for Modern Businesses',
-      'Klavix AI helps businesses save 40+ hours weekly through intelligent automation. Streamline operations, boost efficiency, and scale your growth with our custom AI solutions.'
+      'Custom AI automation solutions. Save 40+ hours per week.'
     ],
     speed: 25,
     cursorBlinkSpeed: 530
