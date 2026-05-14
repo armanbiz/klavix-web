@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MessageSquare } from 'lucide-react';
+import { Phone, Mail, MessageSquare, Globe } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import { useScrollTypewriter } from '../../hooks/useScrollTypewriter';
 
@@ -30,6 +30,15 @@ const features = [
     detailedDescription:
       'More than just a chatbot, our AI-powered conversation engine learns from every interaction to provide increasingly accurate responses. It qualifies leads, books meetings, provides product recommendations, and seamlessly hands off to human agents when needed. Includes multilingual support and advanced analytics dashboard.',
     stat: '90% inquiry resolution',
+  },
+  {
+    icon: Globe,
+    title: 'Web & App Development',
+    description:
+      'High-performance websites and web applications built to convert visitors into customers and scale with your business.',
+    detailedDescription:
+      'We design and develop custom websites and web applications from the ground up — fast, responsive, and built for results. From landing pages to full-stack platforms, every project is crafted with conversion in mind, optimized for search engines, and integrated with automation tools so your digital presence works for you around the clock.',
+    stat: 'Fully custom-built',
   },
 ];
 
@@ -113,7 +122,7 @@ const FeaturesSection = () => {
           {text[0]}
         </h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} />
           ))}

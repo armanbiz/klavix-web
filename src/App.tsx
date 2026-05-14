@@ -4,6 +4,7 @@ import Header from './components/Header';
 import HeroSection from './components/home/HeroSection';
 import FeaturesSection from './components/home/FeaturesSection';
 import ProcessSection from './components/process/ProcessSection';
+import ProjectsSection from './components/home/ProjectsSection';
 import ContactSection from './components/contact/ContactSection';
 import Footer from './components/Footer';
 import MouseGlow from './components/effects/MouseGlow';
@@ -25,6 +26,7 @@ function App() {
             <main>
               <HeroSection />
               <FeaturesSection />
+              <ProjectsSection />
               <ProcessSection />
               <ContactSection />
             </main>

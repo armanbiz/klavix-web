@@ -51,7 +51,7 @@ const NewsletterPage = () => {
           <h1 className="tech-heading text-3xl mb-6">Subscribe to Our Newsletter</h1>
           
           <p className="text-gray-400 mb-8">
-            Get the AI edge—stay ahead with the latest tech news, breakthroughs, and insights. Delivered daily. No spam, just smart.
+            Get the AI edge. Stay ahead with the latest tech news, breakthroughs, and insights. Delivered daily. No spam, just smart.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">

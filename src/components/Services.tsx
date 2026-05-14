@@ -10,7 +10,7 @@ const Services = () => {
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Expertise</h2>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 stagger-children">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 stagger-children">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
