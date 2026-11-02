@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, X } from 'lucide-react';
+import { trackSignup } from '../utils/analytics';
 
 const NewsletterPage = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const NewsletterPage = () => {
         throw new Error('Failed to subscribe');
       }
 
+      trackSignup();
       setShowConfirmation(true);
     } catch (error) {
       console.error('Submission error:', error);

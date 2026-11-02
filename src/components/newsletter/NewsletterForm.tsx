@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { submitNewsletterSubscription } from '../../services/newsletter';
 import type { NewsletterSubscription } from '../../services/newsletter/types';
+import { trackSignup } from '../../utils/analytics';
 
 interface NewsletterFormProps {
   onSuccess?: () => void;
@@ -20,6 +21,7 @@ const NewsletterForm = ({ onSuccess }: NewsletterFormProps) => {
 
     try {
       await submitNewsletterSubscription(formData);
+      trackSignup();
       alert('Thank you for subscribing!');
       onSuccess?.();
     } catch (error) {
